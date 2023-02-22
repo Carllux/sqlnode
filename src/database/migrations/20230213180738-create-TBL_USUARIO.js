@@ -35,6 +35,8 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
+    return queryInterface.dropTable('USUARIOS');
+
     /**
      * Add reverting commands here.
      *
