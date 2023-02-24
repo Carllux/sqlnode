@@ -1,17 +1,22 @@
+require('dotenv').config();
+
 module.exports = {
-    dialect: 'mssql',
-    host: '192.168.3.187',
-    username: 'sa',
-    password: 'desenvolvimento#@2023',
-    database: 'BDAdm',
-    define: {
-        timestamps: true,
-        underscored: true
+  dialect: 'mssql',
+  host: process.env.DATABASE_HOST,
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE,
+  define: {
+    timestamps: true,
+    underscored: true,
+    underscoredAll: true,
+  },
+  dialectOptions: {
+    options: {
+      encrypt: false,
+      enableArithAbort: false,
+      timezone: 'America/Sao_Paulo',
     },
-    dialectOptions: {
-        options: {
-            encrypt: false,
-            enableArithAbort: false
-        }
-    }
+  },
+  timezone: 'America/Sao_Paulo',
 };
