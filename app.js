@@ -1,4 +1,10 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import './src/database';
+
+import homeRoutes from './src/routes/homeRoutes';
+
+dotenv.config();
 
 // const routes = require('./routes');
 
@@ -15,7 +21,7 @@ class App {
   }
 
   routes() {
-
+    this.app.use('/', homeRoutes);
   }
 }
 

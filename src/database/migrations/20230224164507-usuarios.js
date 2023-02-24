@@ -9,35 +9,43 @@ module.exports = {
         allowNull: false,
       },
       usuario: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      nome: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      user_name: {
-        type: Sequelize.STRING(15),
+      sobrenome: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       setor: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       senha: {
-        type: Sequelize.STRING(10),
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      criado_em: {
+      ativo: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      created_ad: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      atualizado_em: {
+      updated_at: {
         type: Sequelize.DATE,
-        allowNull: false,
-      }
+        allowNull: true,
+      },
     });
   },
 
-  async down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('USUARIOS');
-
+  async down(queryInterface) {
+    await queryInterface.dropTable('USUARIOS');
     /**
      * Add reverting commands here.
      *
