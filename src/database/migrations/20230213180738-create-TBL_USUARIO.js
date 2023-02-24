@@ -8,15 +8,19 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      USUARIO: {
+      usuario: {
         type: Sequelize.STRING(15),
         allowNull: false,
       },
-      SETOR: {
+      user_name: {
         type: Sequelize.STRING(15),
         allowNull: false,
       },
-      SENHA: {
+      setor: {
+        type: Sequelize.STRING(15),
+        allowNull: false,
+      },
+      senha: {
         type: Sequelize.STRING(10),
         allowNull: false,
       },
@@ -28,7 +32,6 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       }
-
     });
   },
 

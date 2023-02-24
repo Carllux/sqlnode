@@ -1,8 +1,22 @@
-const express = require('express');
-const routes = require('./routes');
+import express from 'express';
 
-const app = express();
+// const routes = require('./routes');
 
-app.use(express.json());
-app.use(routes);
-app.listen(3333);
+class App {
+  constructor() {
+    this.app = express();
+    this.middlewares();
+    this.routes();
+  }
+
+  middlewares() {
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(express.json());
+  }
+
+  routes() {
+
+  }
+}
+
+export default new App().app;
