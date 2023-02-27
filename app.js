@@ -1,10 +1,12 @@
-import express from 'express';
+/* eslint-disable import/first */
 import dotenv from 'dotenv';
+// eslint-disable-next-line no-use-before-define
+dotenv.config();
+
 import './src/database';
 
-import homeRoutes from './src/routes/homeRoutes';
-
-dotenv.config();
+import express from 'express';
+import usuarioRoutes from './src/routes/usuarioRoutes';
 
 // const routes = require('./routes');
 
@@ -21,7 +23,7 @@ class App {
   }
 
   routes() {
-    this.app.use('/', homeRoutes);
+    this.app.use('/usuarios/', usuarioRoutes);
   }
 }
 

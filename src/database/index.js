@@ -1,9 +1,9 @@
 /* eslint-disable import/no-import-module-exports */
 import Sequelize from 'sequelize';
 import dbConfig from '../config/database';
-import Aluno from '../models/Aluno';
+import Usuario from '../models/Usuario';
 
-const models = [Aluno];
+const models = [Usuario];
 
 // const Sequelize = require('sequelize');
 // const dbConfig = require('../config/database');
@@ -14,6 +14,6 @@ models.forEach((model) => model.init(connection));
 
 // console.log('TOMA');
 
-console.error(dbConfig);
+// console.error(dbConfig);
 
 module.exports = connection;
