@@ -25,19 +25,46 @@ class UsuarioController {
 
   async show(req, res) {
     try {
-      // console.log(req.params);
-      const id = req.params.id * 1;
-      console.log(id);
+      const { id } = req.params;
       const usuario = await Usuario.findByPk(id);
-      // console.log(usuario);
       return res.json(usuario);
     } catch (error) {
       return res.status(404).json({
         message: 'ID não encontrado',
-        erro: error.message,
+        errors: [error.message],
       });
+    }
+  }
+
+  async update(req, res) {
+    try {
+      if (!req.params.id * 1) {
+        return res.status(400).json({
+          errors: ['Id não enviado'],
+        });
+      }
+      const user = await Usuario.findByPk(req.params.id * 1);
+      if (!user) {
+        return res.status(400).json({
+          errors: ['Usuário não existe'],
+        });
+      }
+
+      const updatedData = await user.update(req.body);
+
+      return res.json(updatedData);
+    } catch (error) {
+      console.log(error);
+      return res.status(204).json(null);
     }
   }
 }
 
+/*
+index -> lista todos os registros - get
+store/create - cria um novo registro - post
+delete - apaga um registro - delete
+show - mostra um registro - get
+update - atualiza um registro - patch/put
+*/
 export default new UsuarioController();
