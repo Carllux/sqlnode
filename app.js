@@ -23,7 +23,7 @@ class App {
   }
 
   routes() {
-    this.app.use('/usuarios/', usuarioRoutes);
+    this.app.use('/usuarios', usuarioRoutes);
   }
 }
 

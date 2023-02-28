@@ -1,7 +1,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('USUARIOS', {
+    return queryInterface.createTable('usuarios', {
       ID: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -20,6 +20,7 @@ module.exports = {
       sobrenome: {
         type: Sequelize.STRING(50),
         allowNull: true,
+        defaultValue: null,
       },
       setor: {
         type: Sequelize.STRING(50),
@@ -34,16 +35,16 @@ module.exports = {
         allowNull: false,
         defaultValue: 1,
       },
-      created_ad: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
+      // created_ad: {
+      //   type: Sequelize.DATE,
+      //   allowNull: false,
+      //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      // },
+      // updated_at: {
+      //   type: Sequelize.DATE,
+      //   allowNull: false,
+      //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      // },
     });
   },
 

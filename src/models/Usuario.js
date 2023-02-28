@@ -6,7 +6,9 @@ export default class Usuario extends Model {
     super.init({
       usuario: {
         type: Sequelize.STRING,
+        allowNull: false,
         defaultValue: '',
+        unique: true,
         validate: {
           len: {
             args: [3, 50],
@@ -19,7 +21,7 @@ export default class Usuario extends Model {
         defaultValue: '',
         validate: {
           len: {
-            args: [3, 254],
+            args: [3, 50],
             msg: 'Campo nome deve conter entre 3 e 50 caracteres',
           },
         },
@@ -27,12 +29,12 @@ export default class Usuario extends Model {
       sobrenome: {
         type: Sequelize.STRING,
         defaultValue: '',
-        // validate: {
-        //   len: {
-        //     args: [3, 50],
-        //     msg: 'Campo sobrenome deve conter entre 3 e 50 caracteres',
-        //   },
-        // },
+        validate: {
+          len: {
+            args: [3, 50],
+            msg: 'Campo sobrenome deve conter entre 3 e 50 caracteres',
+          },
+        },
       },
       setor: {
         type: Sequelize.STRING,
@@ -49,8 +51,8 @@ export default class Usuario extends Model {
         defaultValue: '',
         validate: {
           len: {
-            args: [3, 50],
-            msg: 'Campo setor deve conter entre 3 e 50 caracteres',
+            args: [0, 50],
+            msg: 'Campo setor senha conter entre 3 e 50 caracteres',
           },
         },
       },
@@ -60,9 +62,11 @@ export default class Usuario extends Model {
       },
       ativo: {
         type: Sequelize.BOOLEAN,
-        defaultValue: 1,
+        defaultValue: true,
       },
     }, {
+      timestamps: false,
+      underscored: true,
       sequelize,
     });
 
