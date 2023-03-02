@@ -65,6 +65,8 @@ export default class Usuario extends Model {
         defaultValue: true,
       },
     }, {
+      // ao alterar o timestamps para true os inserts nos métodos começam a dar errado
+      // a corrigir
       timestamps: false,
       underscored: true,
       sequelize,
