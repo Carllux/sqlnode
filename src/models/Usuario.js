@@ -78,4 +78,8 @@ export default class Usuario extends Model {
     });
     return this;
   }
+
+  validaSenha(senha) {
+    return bcryptjs.compare(senha, this.senha_hash);
+  }
 }

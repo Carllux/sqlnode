@@ -7,6 +7,7 @@ import './src/database';
 
 import express from 'express';
 import usuarioRoutes from './src/routes/usuarioRoutes';
+import tokenRoutes from './src/routes/tokenRoutes';
 
 // const routes = require('./routes');
 
@@ -24,6 +25,7 @@ class App {
 
   routes() {
     this.app.use('/usuarios', usuarioRoutes);
+    this.app.use('/tokens', tokenRoutes);
   }
 }
 
