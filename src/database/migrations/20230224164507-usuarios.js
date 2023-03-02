@@ -30,21 +30,26 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      grupo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
+      },
       ativo: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: 1,
       },
-      // created_ad: {
-      //   type: Sequelize.DATE,
-      //   allowNull: false,
-      //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      // },
-      // updated_at: {
-      //   type: Sequelize.DATE,
-      //   allowNull: false,
-      //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      // },
+      created_ad: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
     });
   },
 
