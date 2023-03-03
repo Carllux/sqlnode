@@ -5,6 +5,7 @@ dotenv.config();
 
 import './src/database';
 
+import morgan from 'morgan';
 import express from 'express';
 import usuarioRoutes from './src/routes/usuarioRoutes';
 import tokenRoutes from './src/routes/tokenRoutes';
@@ -21,6 +22,7 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(morgan('tiny'));
   }
 
   routes() {

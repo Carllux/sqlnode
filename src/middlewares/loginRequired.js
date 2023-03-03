@@ -19,9 +19,8 @@ export default (req, res, next) => {
     req.user = usuario;
     return next();
   } catch (error) {
-    res.status(401).json({
+    return res.status(401).json({
       errors: ['Token expirado ou inválido.'],
     });
-    return;
   }
 };

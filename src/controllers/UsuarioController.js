@@ -4,12 +4,11 @@ class UsuarioController {
   async store(req, res) {
     try {
       const novoUsuario = await Usuario.create(req.body);
-      console.log(req.body);
       res.json(novoUsuario);
     } catch (error) {
       res.status(400).json(
         {
-          errors: error.errors.map((err) => (err.message === 'UQ__usuarios__9AFF8FC688A1A3FE must be unique' ? 'Usuário já cadastrado' : err.message)),
+          errors: error.errors.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário ${req.body.usuario} já cadastrado`)),
         },
       );
     }
@@ -18,6 +17,7 @@ class UsuarioController {
   async index(_req, res) {
     try {
       const users = await Usuario.findAll();
+      console.log(users);
       return res.json(users);
     } catch (error) {
       return res.status(400).json(
