@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-  dialect: 'mssql',
+  dialect: process.env.DATABASE_DIALECT,
   host: process.env.DATABASE_HOST,
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,

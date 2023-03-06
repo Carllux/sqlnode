@@ -9,7 +9,7 @@ const models = [Usuario];
 // const dbConfig = require('../config/database');
 
 const connection = new Sequelize(dbConfig);
-
+console.log(connection);
 models.forEach((model) => model.init(connection));
 
 // console.log('TOMA');
