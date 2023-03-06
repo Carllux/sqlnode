@@ -3,12 +3,33 @@ import Usuario from '../models/Usuario';
 class UsuarioController {
   async store(req, res) {
     try {
-      const novoUsuario = await Usuario.create(req.body);
-      res.json(novoUsuario);
+      const user = await Usuario.findOne({
+        where: {
+          usuario: req.body.usuario,
+        },
+      });
+      console.log(user);
+      if (!user) {
+        const novoUsuario = await Usuario.create(req.body);
+        const {
+          id, nome, sobrenome, usuario, setor,
+        } = novoUsuario;
+        res.json(
+          {
+            id, nome, sobrenome, usuario, setor,
+          },
+        );
+      } else {
+        res.status(400).json(
+          {
+            errors: `Usuário "${req.body.usuario}" já cadastrado`,
+          },
+        );
+      }
     } catch (error) {
       res.status(400).json(
         {
-          errors: error.errors.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário ${req.body.usuario} já cadastrado`)),
+          errors: error.errors?.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário "${req.body.usuario}" já cadastrado`)),
         },
       );
     }
@@ -30,6 +51,9 @@ class UsuarioController {
     try {
       const { id } = req.params;
       const usuario = await Usuario.findByPk(id);
+
+      if (!usuario) throw Error;
+
       return res.json(usuario);
     } catch (error) {
       return res.status(404).json({
@@ -60,7 +84,7 @@ class UsuarioController {
       console.log(error.errors);
       return res.status(400).json(
         {
-          errors: error.errors.map((err) => (err.message === 'UQ__usuarios__9AFF8FC688A1A3FE must be unique' ? 'Usuário já cadastrado' : err.message)),
+          errors: error.errors.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário ${req.body.usuario} já cadastrado`)),
         },
       );
     }
@@ -80,7 +104,7 @@ class UsuarioController {
         });
       }
 
-      await user.destroy();
+      if (user) await user.destroy();
       return res.json(user);
     } catch (error) {
       console.log(error.errors);
