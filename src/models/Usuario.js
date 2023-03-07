@@ -60,14 +60,32 @@ export default class Usuario extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
+      grupo: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
       ativo: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
+      // criado_em: {
+      //   type: Sequelize.TIMESTAMP,
+      //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      //   allowNull: false,
+      // },
+      // atualizado_em: {
+      //   type: Sequelize.TIMESTAMP,
+      //   defaultValue: Sequelize.literal(
+      //     'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+      //   ),
+      //   allowNull: false,
+      // },
     }, {
       // ao alterar o timestamps para true os inserts nos métodos começam a dar errado
       // a corrigir
-      timestamps: false,
+      timestamps: true,
+      createdAt: 'criado_em',
+      updatedAt: 'atualizado_em',
       underscored: true,
       sequelize,
     });

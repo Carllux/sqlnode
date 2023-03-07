@@ -11,6 +11,7 @@ class UsuarioController {
       console.log(user);
       if (!user) {
         const novoUsuario = await Usuario.create(req.body);
+        console.log(req.body);
         const {
           id, nome, sobrenome, usuario, setor,
         } = novoUsuario;
