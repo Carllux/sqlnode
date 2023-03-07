@@ -110,7 +110,7 @@ class UsuarioController {
       console.log(error.errors);
       return res.status(400).json(
         {
-          errors: error.errors.map((err) => (err.message === 'UQ__usuarios__9AFF8FC688A1A3FE must be unique' ? 'Usuário já cadastrado' : err.message)),
+          errors: [error.message],
         },
       );
     }
