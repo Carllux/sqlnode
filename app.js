@@ -5,6 +5,7 @@ dotenv.config();
 
 import './src/database';
 
+import cors from 'cors';
 import morgan from 'morgan';
 import express from 'express';
 import usuarioRoutes from './src/routes/usuarioRoutes';
@@ -21,13 +22,14 @@ class App {
 
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cors({ origin: true }));
     this.app.use(express.json());
     this.app.use(morgan('tiny'));
   }
 
   routes() {
     this.app.use('/usuarios', usuarioRoutes);
-    this.app.use('/tokens', tokenRoutes);
+    this.app.use('/login', tokenRoutes);
   }
 }
 
