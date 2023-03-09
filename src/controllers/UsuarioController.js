@@ -43,7 +43,9 @@ class UsuarioController {
       return res.json(users);
     } catch (error) {
       return res.status(400).json(
-        { errors: error.errors.map((err) => err.message) },
+        {
+          errors: error.errors?.map((err) => err.message),
+        },
       );
     }
   }

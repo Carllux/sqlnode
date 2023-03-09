@@ -9,11 +9,15 @@ const models = [Usuario];
 // const dbConfig = require('../config/database');
 
 const connection = new Sequelize(dbConfig);
-console.log(connection);
+
+connection.authenticate()
+  .then(() => {
+    console.log('Conexão estabelecida com sucesso.');
+  })
+  .catch((err) => {
+    console.error('Não foi possível conectar ao banco de dados', err);
+  });
+
 models.forEach((model) => model.init(connection));
-
-// console.log('TOMA');
-
-// console.error(dbConfig);
 
 module.exports = connection;
