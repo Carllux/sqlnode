@@ -87,7 +87,7 @@ class UsuarioController {
       console.log(error.errors);
       return res.status(400).json(
         {
-          errors: error.errors.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário ${req.body.usuario} já cadastrado`)),
+          errors: error?.errors.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário ${req.body.usuario} já cadastrado`)),
         },
       );
     }
