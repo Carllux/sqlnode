@@ -68,12 +68,14 @@ class UsuarioController {
 
   async update(req, res) {
     try {
-      if (!req.params.id * 1) {
+      const id = req.params.id * 1
+      if (!id) {
         return res.status(400).json({
           errors: ['Id não enviado ou não existe'],
         });
       }
-      const user = await Usuario.findByPk(req.params.id * 1);
+      const user = await Usuario.findByPk(id);
+      console.log(user, 'updateUser');
       if (!user) {
         return res.status(400).json({
           errors: ['Usuário não existe'],

@@ -10,37 +10,36 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      usuario: {
+      nome_item: {
         type: Sequelize.STRING(50),
         allowNull: false,
         unique: true,
       },
-      nome: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      sobrenome: {
-        type: Sequelize.STRING(50),
-        allowNull: true,
-        defaultValue: null,
-      },
-      setor: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      senha_hash: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      grupo: {
+      quantidade: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 1,
       },
-      ativo: {
-        type: Sequelize.BOOLEAN,
+      comentario: {
+        type: Sequelize.STRING(250),
+        allowNull: false,
+      },
+      ref: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+        defaultValue: null,
+      },
+      usuario: {
+        fk,
+      },
+      setor: {
+        fk,
+      },
+      status: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 1,
+        FK
       },
       criado_em: {
         type: Sequelize.DATE,
@@ -55,7 +54,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('pedidos');
     /**
      * Add reverting commands here.
