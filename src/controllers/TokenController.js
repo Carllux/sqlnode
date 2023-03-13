@@ -6,22 +6,22 @@ class TokenController {
     try {
       const { usuario = '', senha = '' } = req.body;
       // console.log(usuario, senha);
+      const user = await Usuario.findOne({ where: { usuario } });
+      const validPass = (await user?.validaSenha(senha));
 
-      if (!usuario || !senha) {
+      if (!user && !senha) {
         return res.status(401).json({
           errors: ['Credenciais inválidas'],
         });
       }
 
-      const user = await Usuario.findOne({ where: { usuario } });
-
-      if (!user) {
+      if (!user && senha) {
         return res.status(401).json({
           errors: ['Usuário não existe'],
         });
       }
 
-      if (!(await user.validaSenha(senha))) {
+      if (user && (!validPass || !senha)) {
         return res.status(401).json({
           errors: ['Senha inválida'],
         });
