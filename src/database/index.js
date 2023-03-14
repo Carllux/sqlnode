@@ -4,10 +4,6 @@ import dbConfig from '../config/database';
 import Usuario from '../models/Usuario';
 
 const models = [Usuario];
-
-// const Sequelize = require('sequelize');
-// const dbConfig = require('../config/database');
-
 const connection = new Sequelize(dbConfig);
 
 connection.authenticate()
