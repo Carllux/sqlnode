@@ -1,44 +1,17 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('usuarios', {
-      user_id: {
+    return queryInterface.createTable('status', {
+      status_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      usuario: {
+      descricao: {
         type: Sequelize.STRING(50),
         allowNull: false,
         unique: true,
-      },
-      nome: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      sobrenome: {
-        type: Sequelize.STRING(50),
-        allowNull: true,
-        defaultValue: null,
-      },
-      setor: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      senha_hash: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      grupo: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 1,
-      },
-      ativo: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: 1,
       },
       criado_em: {
         type: Sequelize.DATE,
@@ -54,7 +27,7 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('usuarios');
+    await queryInterface.dropTable('status');
     /**
      * Add reverting commands here.
      *
@@ -62,4 +35,5 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
   },
+
 };

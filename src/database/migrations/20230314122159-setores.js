@@ -1,45 +1,17 @@
-'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('pedidos', {
-      num_ped: {
+    return queryInterface.createTable('departamentos', {
+      setor_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      nome_item: {
+      setor: {
         type: Sequelize.STRING(50),
         allowNull: false,
         unique: true,
-      },
-      quantidade: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 1,
-      },
-      comentario: {
-        type: Sequelize.STRING(250),
-        allowNull: false,
-      },
-      ref: {
-        type: Sequelize.STRING(50),
-        allowNull: true,
-        defaultValue: null,
-      },
-      usuario: {
-        fk,
-      },
-      setor: {
-        fk,
-      },
-      status: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 1,
-        FK
       },
       criado_em: {
         type: Sequelize.DATE,
@@ -55,7 +27,7 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('pedidos');
+    await queryInterface.dropTable('setores');
     /**
      * Add reverting commands here.
      *

@@ -52,7 +52,7 @@ export default class Usuario extends Model {
         validate: {
           len: {
             args: [0, 50],
-            msg: 'Campo setor senha conter entre 3 e 50 caracteres',
+            msg: 'Campo senha deve conter entre 3 e 50 caracteres',
           },
         },
       },
@@ -68,21 +68,7 @@ export default class Usuario extends Model {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
-      // criado_em: {
-      //   type: Sequelize.TIMESTAMP,
-      //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      //   allowNull: false,
-      // },
-      // atualizado_em: {
-      //   type: Sequelize.TIMESTAMP,
-      //   defaultValue: Sequelize.literal(
-      //     'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
-      //   ),
-      //   allowNull: false,
-      // },
     }, {
-      // ao alterar o timestamps para true os inserts nos métodos começam a dar errado
-      // a corrigir
       timestamps: true,
       createdAt: 'criado_em',
       updatedAt: 'atualizado_em',
