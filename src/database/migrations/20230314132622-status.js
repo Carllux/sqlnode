@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.createTable('status', {
-      status_id: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,

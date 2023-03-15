@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.createTable('pedidos', {
-      ped_id: {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -27,31 +27,31 @@ module.exports = {
         allowNull: true,
         defaultValue: null,
       },
-      // usuario: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'usuarios',
-      //     key: 'user_id',
-      //   },
-      // },
-      // setor: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'setores',
-      //     key: 'setor_id',
-      //   },
-      // },
-      // status: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   defaultValue: 1,
-      //   references: {
-      //     model: 'status',
-      //     key: 'status_id',
-      //   },
-      // },
+      usuario: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'usuarios',
+          key: 'id',
+        },
+      },
+      setor: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'setores',
+          key: 'id',
+        },
+      },
+      status: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: 1,
+        references: {
+          model: 'status',
+          key: 'id',
+        },
+      },
       criado_em: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -67,11 +67,5 @@ module.exports = {
 
   async down(queryInterface) {
     await queryInterface.dropTable('pedidos');
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
   },
 };

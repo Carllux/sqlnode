@@ -1,4 +1,4 @@
-import  from '../models/';
+import from '../models/';
 
 class nomeController {
   async store(req, res) {
