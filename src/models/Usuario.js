@@ -37,8 +37,9 @@ export default class Usuario extends Model {
         },
       },
       setor: {
+        // fk
         type: Sequelize.STRING,
-        defaultValue: '',
+        defaultValue: null,
         validate: {
           len: {
             args: [2, 50],
@@ -61,6 +62,7 @@ export default class Usuario extends Model {
         defaultValue: '',
       },
       grupo: {
+        // fk
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },

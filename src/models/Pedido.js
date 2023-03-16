@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-export default class Usuario extends Model {
+export default class Pedido extends Model {
   static init(sequelize) {
     super.init({
       nome_item: {
@@ -32,19 +32,13 @@ export default class Usuario extends Model {
           },
         },
       },
-      setor: {
+      usuario: {
+        // fk
         type: Sequelize.STRING,
-        defaultValue: '',
-        validate: {
-          len: {
-            args: [2, 50],
-            msg: 'Campo setor deve conter entre 2 e 50 caracteres',
-          },
-        },
       },
-      grupo: {
+      status: {
+        // fk
         type: Sequelize.BOOLEAN,
-        defaultValue: true,
       },
       ativo: {
         type: Sequelize.BOOLEAN,

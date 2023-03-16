@@ -27,7 +27,7 @@ module.exports = {
         allowNull: true,
         defaultValue: null,
       },
-      usuario: {
+      usuario_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -35,15 +35,7 @@ module.exports = {
           key: 'id',
         },
       },
-      setor: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'setores',
-          key: 'id',
-        },
-      },
-      status: {
+      status_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         defaultValue: 1,
