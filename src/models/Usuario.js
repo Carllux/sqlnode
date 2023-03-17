@@ -36,7 +36,7 @@ export default class Usuario extends Model {
           },
         },
       },
-      setor: {
+      setor_id: {
         // fk
         type: Sequelize.STRING,
         defaultValue: null,
@@ -77,6 +77,8 @@ export default class Usuario extends Model {
       underscored: true,
       sequelize,
     });
+
+    this.associations({});
 
     this.addHook('beforeSave', async (usuario) => {
       if (usuario.senha) {
