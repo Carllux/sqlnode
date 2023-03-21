@@ -78,7 +78,7 @@ export default class Usuario extends Model {
       sequelize,
     });
 
-    this.associations({});
+    // this.associations({});
 
     this.addHook('beforeSave', async (usuario) => {
       if (usuario.senha) {
