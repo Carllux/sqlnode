@@ -3,8 +3,10 @@ import dotenv from 'dotenv';
 // eslint-disable-next-line no-use-before-define
 dotenv.config();
 
+import { resolve } from 'path';
 import './src/database';
 
+import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import express from 'express';
@@ -22,9 +24,11 @@ class App {
 
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(helmet());
     this.app.use(cors({ origin: true }));
     this.app.use(express.json());
     this.app.use(morgan('tiny'));
+    this.app.use('images', express.static(resolve(__dirname, '..', 'uploads', 'images')))
   }
 
   routes() {
