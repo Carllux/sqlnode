@@ -3,8 +3,8 @@ import Usuario from '../models/Usuario';
 
 export default async (req, res, next) => {
   const { authorization } = req.headers;
-  // console.log(req.headers);
-
+  console.log(req.headers, 'header');
+  console.log(Usuario);
   if (!authorization) {
     res.status(401).json({
       errors: ['É necessário estar logado'],
@@ -17,6 +17,7 @@ export default async (req, res, next) => {
     const dados = jwt.verify(token, process.env.TOKEN_SECRET);
     const { id, usuario } = dados;
 
+    console.log(id);
     const user = await Usuario.findOne({
       where: {
         id,
@@ -30,11 +31,12 @@ export default async (req, res, next) => {
         errors: ['Usuário inválido ou desativado.'],
       });
     }
-
+    console.log(user);
     req.userId = id;
     req.user = usuario;
     return next();
   } catch (error) {
+    console.log(error);
     return res.status(401).json({
       errors: ['Token expirado ou inválido.'],
     });

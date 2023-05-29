@@ -32,8 +32,9 @@ class TokenController {
         expiresIn: process.env.TOKEN_EXPIRATION,
       });
 
-      return res.json({ token });
+      return res.json({ token, user });
     } catch (error) {
+      console.log(error);
       return res.status(400).json(
         {
           errors: error.errors?.map((err) => (err.message)),

@@ -14,6 +14,19 @@ import usuarioRoutes from './src/routes/usuarioRoutes';
 import tokenRoutes from './src/routes/tokenRoutes';
 
 // const routes = require('./routes');
+const whiteList = [
+  'http://localhost:3000',
+];
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
 
 class App {
   constructor() {
@@ -25,10 +38,10 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(helmet());
-    this.app.use(cors({ origin: true }));
+    this.app.use(cors(corsOptions));
     this.app.use(express.json());
     this.app.use(morgan('tiny'));
-    this.app.use('images', express.static(resolve(__dirname, '..', 'uploads', 'images')))
+    this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));
   }
 
   routes() {

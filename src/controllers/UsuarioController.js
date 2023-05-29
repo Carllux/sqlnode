@@ -3,15 +3,17 @@ import Usuario from '../models/Usuario';
 class UsuarioController {
   async store(req, res) {
     try {
+      console.log(req.body);
       const user = await Usuario.findOne({
         where: {
           usuario: req.body.usuario,
         },
       });
-      console.log(user);
+      // console.log(user, 'usuário já registrado');
       if (!user) {
         const novoUsuario = await Usuario.create(req.body);
-        console.log(req.body);
+        // console.log(req.body);
+        // console.log(novoUsuario);
         const {
           id, nome, sobrenome, usuario, setor,
         } = novoUsuario;
@@ -28,6 +30,7 @@ class UsuarioController {
         );
       }
     } catch (error) {
+      console.log(error);
       res.status(400).json(
         {
           errors: error.errors?.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário "${req.body.usuario}" já cadastrado`)),

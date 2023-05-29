@@ -6,7 +6,8 @@ export default class Usuario extends Model {
     super.init({
       usuario: {
         type: Sequelize.STRING,
-        allowNull: false,
+        primaryKey: true,
+        allowNull: true,
         defaultValue: '',
         unique: true,
         validate: {
@@ -39,6 +40,7 @@ export default class Usuario extends Model {
       setor_id: {
         // fk
         type: Sequelize.STRING,
+        allowNull: true,
         defaultValue: null,
         validate: {
           len: {
@@ -61,10 +63,15 @@ export default class Usuario extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
-      grupo: {
+      grupo_id: {
         // fk
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
+      },
+      perfil_id: {
+        // fk
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
       },
       ativo: {
         type: Sequelize.BOOLEAN,

@@ -47,7 +47,7 @@ module.exports = {
       perfil_id: {
         // 1:1 association
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'perfis_de_acesso',
           key: 'id',
