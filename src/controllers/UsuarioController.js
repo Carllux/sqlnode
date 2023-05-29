@@ -54,6 +54,7 @@ class UsuarioController {
   }
 
   async show(req, res) {
+    console.log(req.params, 'Método show');
     try {
       const { id } = req.params;
       const usuario = await Usuario.findByPk(id);
@@ -71,7 +72,7 @@ class UsuarioController {
 
   async update(req, res) {
     try {
-      const id = req.params.id * 1
+      const id = req.params.id * 1;
       if (!id) {
         return res.status(400).json({
           errors: ['Id não enviado ou não existe'],

@@ -37,18 +37,18 @@ export default class Usuario extends Model {
           },
         },
       },
-      setor_id: {
-        // fk
-        type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: null,
-        validate: {
-          len: {
-            args: [2, 50],
-            msg: 'Campo setor deve conter entre 2 e 50 caracteres',
-          },
-        },
-      },
+      // setor_id: {
+      //   // fk
+      //   type: Sequelize.STRING,
+      //   allowNull: true,
+      //   defaultValue: null,
+      //   validate: {
+      //     len: {
+      //       args: [2, 50],
+      //       msg: 'Campo setor deve conter entre 2 e 50 caracteres',
+      //     },
+      //   },
+      // },
       senha: {
         type: Sequelize.VIRTUAL,
         defaultValue: '',
@@ -63,16 +63,16 @@ export default class Usuario extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
-      grupo_id: {
-        // fk
-        type: Sequelize.INTEGER,
-        defaultValue: 1,
-      },
-      perfil_id: {
-        // fk
-        type: Sequelize.INTEGER,
-        defaultValue: 1,
-      },
+      // grupo_id: {
+      //   // fk
+      //   type: Sequelize.INTEGER,
+      //   defaultValue: 1,
+      // },
+      // perfil_id: {
+      //   // fk
+      //   type: Sequelize.INTEGER,
+      //   defaultValue: 1,
+      // },
       ativo: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,

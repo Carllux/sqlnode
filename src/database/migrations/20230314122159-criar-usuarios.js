@@ -22,37 +22,37 @@ module.exports = {
         allowNull: true,
         defaultValue: null,
       },
-      setor_id: {
-        // 1:1 association
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'setores',
-          key: 'id',
-        },
-      },
+      // setor_id: {
+      //   // 1:1 association
+      //   type: Sequelize.INTEGER,
+      //   allowNull: true,
+      //   references: {
+      //     model: 'setores',
+      //     key: 'id',
+      //   },
+      // },
       senha_hash: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      grupo_id: {
-        // 1:1 association
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'grupos',
-          key: 'id',
-        },
-      },
-      perfil_id: {
-        // 1:1 association
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'perfis_de_acesso',
-          key: 'id',
-        },
-      },
+      // grupo_id: {
+      //   // 1:1 association
+      //   type: Sequelize.INTEGER,
+      //   allowNull: true,
+      //   references: {
+      //     model: 'grupos',
+      //     key: 'id',
+      //   },
+      // },
+      // perfil_id: {
+      //   // 1:1 association
+      //   type: Sequelize.INTEGER,
+      //   allowNull: true,
+      //   references: {
+      //     model: 'perfis_de_acesso',
+      //     key: 'id',
+      //   },
+      // },
       ativo: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

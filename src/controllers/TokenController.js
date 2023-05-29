@@ -9,6 +9,7 @@ class TokenController {
       const user = await Usuario.findOne({ where: { usuario } });
       const validPass = (await user?.validaSenha(senha));
 
+      // Código a ser refatorado
       if (!user && !senha) {
         return res.status(401).json({
           errors: ['Credenciais inválidas'],
