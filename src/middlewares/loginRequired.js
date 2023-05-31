@@ -16,10 +16,9 @@ export default async (req, res, next) => {
 
   try {
     const dados = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(dados, 'Logando dados do método de usuário');
+
     const { id, usuario } = dados;
 
-    console.log(id, 'ID dentro do método de usuário');
     const user = await Usuario.findOne({
       where: {
         id,
@@ -28,6 +27,7 @@ export default async (req, res, next) => {
       },
     });
 
+    console.log(id);
     console.log(user);
 
     if (!user) {

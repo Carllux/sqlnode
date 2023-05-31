@@ -4,10 +4,15 @@ import bcryptjs from 'bcryptjs';
 export default class Usuario extends Model {
   static init(sequelize) {
     super.init({
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       usuario: {
         type: Sequelize.STRING,
         primaryKey: true,
-        allowNull: true,
+        allowNull: false,
         defaultValue: '',
         unique: true,
         validate: {

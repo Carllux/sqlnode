@@ -79,14 +79,14 @@ class UsuarioController {
         });
       }
       const user = await Usuario.findByPk(id);
-      console.log(user, 'updateUser');
       if (!user) {
         return res.status(400).json({
           errors: ['Usuário não existe'],
         });
       }
-
-      const updatedData = await user.update(req.body);
+      // console.log(user.id, 'req.body update');
+      const updatedData = await user.update(req.body, { where: { id: user.id } });
+      console.log(updatedData, 'updateUser, método update');
 
       return res.json(updatedData);
     } catch (error) {

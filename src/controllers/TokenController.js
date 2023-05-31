@@ -29,6 +29,7 @@ class TokenController {
       }
 
       const { id } = user;
+      // console.log(user.dataValues.id, id, 'User no token controller');
       const token = jwt.sign({ id, usuario }, process.env.TOKEN_SECRET, {
         expiresIn: process.env.TOKEN_EXPIRATION,
       });
