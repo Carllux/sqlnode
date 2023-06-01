@@ -9,11 +9,8 @@ class UsuarioController {
           usuario: req.body.usuario,
         },
       });
-      // console.log(user, 'usuário já registrado');
       if (!user) {
         const novoUsuario = await Usuario.create(req.body);
-        // console.log(req.body);
-        // console.log(novoUsuario);
         const {
           id, nome, sobrenome, usuario, setor,
         } = novoUsuario;
@@ -84,9 +81,9 @@ class UsuarioController {
           errors: ['Usuário não existe'],
         });
       }
-      // console.log(user.id, 'req.body update');
+
+      console.log(req.body, '<---- req.body update');
       const updatedData = await user.update(req.body, { where: { id: user.id } });
-      console.log(updatedData, 'updateUser, método update');
 
       return res.json(updatedData);
     } catch (error) {

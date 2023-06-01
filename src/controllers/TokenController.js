@@ -5,7 +5,6 @@ class TokenController {
   async store(req, res) {
     try {
       const { usuario = '', senha = '' } = req.body;
-      // console.log(usuario, senha);
       const user = await Usuario.findOne({ where: { usuario } });
       const validPass = (await user?.validaSenha(senha));
 
@@ -29,7 +28,6 @@ class TokenController {
       }
 
       const { id } = user;
-      // console.log(user.dataValues.id, id, 'User no token controller');
       const token = jwt.sign({ id, usuario }, process.env.TOKEN_SECRET, {
         expiresIn: process.env.TOKEN_EXPIRATION,
       });

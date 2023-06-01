@@ -4,14 +4,8 @@ import bcryptjs from 'bcryptjs';
 export default class Usuario extends Model {
   static init(sequelize) {
     super.init({
-      id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-      },
       usuario: {
         type: Sequelize.STRING,
-        primaryKey: true,
         allowNull: false,
         defaultValue: '',
         unique: true,
@@ -42,25 +36,13 @@ export default class Usuario extends Model {
           },
         },
       },
-      // setor_id: {
-      //   // fk
-      //   type: Sequelize.STRING,
-      //   allowNull: true,
-      //   defaultValue: null,
-      //   validate: {
-      //     len: {
-      //       args: [2, 50],
-      //       msg: 'Campo setor deve conter entre 2 e 50 caracteres',
-      //     },
-      //   },
-      // },
       senha: {
         type: Sequelize.VIRTUAL,
         defaultValue: '',
         validate: {
           len: {
             args: [0, 50],
-            msg: 'Campo senha deve conter entre 3 e 50 caracteres',
+            msg: 'Campo setor senha conter entre 3 e 50 caracteres',
           },
         },
       },
@@ -68,16 +50,6 @@ export default class Usuario extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
-      // grupo_id: {
-      //   // fk
-      //   type: Sequelize.INTEGER,
-      //   defaultValue: 1,
-      // },
-      // perfil_id: {
-      //   // fk
-      //   type: Sequelize.INTEGER,
-      //   defaultValue: 1,
-      // },
       ativo: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
@@ -89,8 +61,6 @@ export default class Usuario extends Model {
       underscored: true,
       sequelize,
     });
-
-    // this.associations({});
 
     this.addHook('beforeSave', async (usuario) => {
       if (usuario.senha) {
