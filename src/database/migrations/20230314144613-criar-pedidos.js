@@ -27,23 +27,6 @@ module.exports = {
         allowNull: true,
         defaultValue: null,
       },
-      usuario_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'usuarios',
-          key: 'id',
-        },
-      },
-      status_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        defaultValue: 1,
-        references: {
-          model: 'status',
-          key: 'id',
-        },
-      },
       criado_em: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -53,6 +36,27 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      usuario_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'usuarios',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      status_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: 1,
+        references: {
+          model: 'status',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
     });
   },
