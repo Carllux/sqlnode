@@ -17,6 +17,7 @@ import pedidoRoutes from './src/routes/pedidoRoutes';
 // const routes = require('./routes');
 const whiteList = [
   'http://localhost:3000',
+  'http://127.0.0.1:5500',
 ];
 
 const corsOptions = {
