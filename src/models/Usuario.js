@@ -27,8 +27,8 @@ export default class Usuario extends Model {
         },
       },
       sobrenome: {
+        allowNull: true,
         type: Sequelize.STRING,
-        defaultValue: '',
         validate: {
           len: {
             args: [3, 50],
@@ -37,8 +37,8 @@ export default class Usuario extends Model {
         },
       },
       senha: {
+        allowNull: false,
         type: Sequelize.VIRTUAL,
-        defaultValue: '',
         validate: {
           len: {
             args: [0, 50],
@@ -48,7 +48,7 @@ export default class Usuario extends Model {
       },
       senha_hash: {
         type: Sequelize.STRING,
-        defaultValue: '',
+        // defaultValue: '',
       },
       ativo: {
         type: Sequelize.BOOLEAN,

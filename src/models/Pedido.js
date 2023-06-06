@@ -48,10 +48,10 @@ export default class Pedido extends Model {
           key: 'id',
         },
       },
-      fornecedor: {
-        type: Sequelize.INTEGER,
-        defaultValue: null,
-      },
+      // fornecedor: {
+      //   type: Sequelize.INTEGER,
+      //   defaultValue: null,
+      // },
     }, {
       timestamps: true,
       createdAt: 'criado_em',
