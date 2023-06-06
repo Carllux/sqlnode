@@ -27,8 +27,8 @@ export default async (req, res, next) => {
       },
     });
 
-    console.log(id);
-    console.log(user);
+    // console.log(id);
+    // console.log(user);
 
     if (!user) {
       return res.status(401).json({

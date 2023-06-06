@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import Pedido from './Pedido';
 
 export default class Status extends Model {
   static init(sequelize) {
@@ -20,8 +21,10 @@ export default class Status extends Model {
       updatedAt: 'atualizado_em',
       underscored: true,
       sequelize,
+      modelName: 'Status',
     });
-
+    Status.hasOne(Pedido, { foreignKey: 'id' });
+    Pedido.belongsTo(Status, { foreignKey: 'id' });
     return this;
   }
 }

@@ -28,11 +28,5 @@ module.exports = {
 
   async down(queryInterface) {
     await queryInterface.dropTable('grupos');
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
   },
 };

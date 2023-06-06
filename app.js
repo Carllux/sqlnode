@@ -12,6 +12,7 @@ import morgan from 'morgan';
 import express from 'express';
 import usuarioRoutes from './src/routes/usuarioRoutes';
 import tokenRoutes from './src/routes/tokenRoutes';
+import pedidoRoutes from './src/routes/pedidoRoutes';
 
 // const routes = require('./routes');
 const whiteList = [
@@ -47,6 +48,7 @@ class App {
   routes() {
     this.app.use('/usuarios', usuarioRoutes);
     this.app.use('/login', tokenRoutes);
+    this.app.use('/pedidos', pedidoRoutes);
   }
 }
 

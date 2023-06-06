@@ -8,34 +8,14 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      nome_item: {
+      descr: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true,
       },
       quantidade: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 1,
-      },
-      comentario: {
-        type: Sequelize.STRING(250),
-        allowNull: false,
-      },
-      ref: {
-        type: Sequelize.STRING(50),
-        allowNull: true,
-        defaultValue: null,
-      },
-      criado_em: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
-      atualizado_em: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       usuario_id: {
         type: Sequelize.INTEGER,
@@ -57,6 +37,30 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
+      },
+      comentario: {
+        type: Sequelize.STRING(250),
+        allowNull: true,
+      },
+      ref: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+        defaultValue: null,
+      },
+      ativo: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: 1,
+      },
+      criado_em: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      atualizado_em: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     });
   },

@@ -60,6 +60,7 @@ export default class Usuario extends Model {
       updatedAt: 'atualizado_em',
       underscored: true,
       sequelize,
+      modelName: 'Usuario',
     });
 
     this.addHook('beforeSave', async (usuario) => {
@@ -68,6 +69,7 @@ export default class Usuario extends Model {
         usuario.senha_hash = await bcryptjs.hash(usuario.senha, 8);
       }
     });
+
     return this;
   }
 

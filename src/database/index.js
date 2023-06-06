@@ -2,8 +2,10 @@
 import Sequelize from 'sequelize';
 import dbConfig from '../config/database';
 import Usuario from '../models/Usuario';
+import Pedido from '../models/Pedido';
+import Status from '../models/Status';
 
-const models = [Usuario];
+const models = [Usuario, Pedido, Status];
 const connection = new Sequelize(dbConfig);
 
 connection.authenticate()

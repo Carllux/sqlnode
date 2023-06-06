@@ -21,6 +21,7 @@ export default class Setor extends Model {
       updatedAt: 'atualizado_em',
       underscored: true,
       sequelize,
+      modelName: 'Setor',
     });
 
     return this;
