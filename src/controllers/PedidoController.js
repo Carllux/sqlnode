@@ -22,7 +22,7 @@ class PedidoController {
 
     try {
       const { id } = req.params;
-      const pedido = await Pedido.findByPk(id);
+      const pedido = await Pedido.findByPk(id, { include: Usuario });
 
       if (!pedido) throw Error;
 
@@ -46,12 +46,9 @@ class PedidoController {
         usuario_id: req.userId,
         ativo: 1,
         status_id: 1,
-        // fornecedor: req.body.fornecedor,
       });
-      // console.log(novoPedido);
       res.json(novoPedido);
     } catch (error) {
-      // console.log(error);
       res.status(400).json(
         {
           errors: error.errors?.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário "${req.body.usuario}" já cadastrado`)),
@@ -75,7 +72,6 @@ class PedidoController {
         });
       }
 
-      // console.log(req.body, '<---- req.body update');
       const updatedData = await order.update(req.body, { where: { id: order.id } });
 
       return res.json(updatedData);

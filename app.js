@@ -14,6 +14,8 @@ import usuarioRoutes from './src/routes/usuarioRoutes';
 import tokenRoutes from './src/routes/tokenRoutes';
 import pedidoRoutes from './src/routes/pedidoRoutes';
 
+// Versão um da API
+const v1Url = `${process.env.V1_URL}`;
 // const routes = require('./routes');
 const whiteList = [
   'http://localhost:3000',
@@ -47,9 +49,9 @@ class App {
   }
 
   routes() {
-    this.app.use('/usuarios', usuarioRoutes);
-    this.app.use('/login', tokenRoutes);
-    this.app.use('/pedidos', pedidoRoutes);
+    this.app.use(`${v1Url}/usuarios`, usuarioRoutes);
+    this.app.use(`${v1Url}/login`, tokenRoutes);
+    this.app.use(`${v1Url}/pedidos`, pedidoRoutes);
   }
 }
 

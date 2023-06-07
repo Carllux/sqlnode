@@ -48,7 +48,6 @@ export default class Usuario extends Model {
       },
       senha_hash: {
         type: Sequelize.STRING,
-        // defaultValue: '',
       },
       ativo: {
         type: Sequelize.BOOLEAN,
