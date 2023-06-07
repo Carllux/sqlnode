@@ -5,7 +5,7 @@ import Status from '../models/Status';
 class PedidoController {
   async index(_req, res) {
     try {
-      const pedidos = await Pedido.findAll();
+      const pedidos = await Pedido.findAll({ include: Usuario });
       console.log(res);
       return res.json(pedidos);
     } catch (error) {
@@ -49,6 +49,7 @@ class PedidoController {
       });
       res.json(novoPedido);
     } catch (error) {
+      c
       res.status(400).json(
         {
           errors: error.errors?.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário "${req.body.usuario}" já cadastrado`)),

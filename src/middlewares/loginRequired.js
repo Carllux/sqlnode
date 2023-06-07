@@ -5,12 +5,13 @@ export default async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
+    res.send('É necessário estar logado');
     res.status(401).json({
       errors: ['É necessário estar logado'],
     });
   }
 
-  console.log(authorization);
+  // console.log(authorization);
 
   const [, token] = authorization.split(' ');
 
@@ -26,9 +27,6 @@ export default async (req, res, next) => {
         ativo: 1,
       },
     });
-
-    // console.log(id);
-    // console.log(user);
 
     if (!user) {
       return res.status(401).json({
