@@ -38,7 +38,7 @@ export default async (req, res, next) => {
     req.user = usuario;
     return next();
   } catch (error) {
-    console.log(error, 'erro no Login required');
+    // console.log(error, 'erro no Login required');
     return res.status(401).json({
       errors: ['Token expirado ou inválido.'],
     });

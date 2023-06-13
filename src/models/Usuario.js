@@ -46,6 +46,10 @@ export default class Usuario extends Model {
           },
         },
       },
+      foto: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
       senha_hash: {
         type: Sequelize.STRING,
       },

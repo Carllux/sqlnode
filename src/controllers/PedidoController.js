@@ -1,6 +1,5 @@
 import Usuario from '../models/Usuario';
 import Pedido from '../models/Pedido';
-import Status from '../models/Status';
 
 class PedidoController {
   async index(_req, res) {
@@ -49,7 +48,6 @@ class PedidoController {
       });
       res.json(novoPedido);
     } catch (error) {
-      c
       res.status(400).json(
         {
           errors: error.errors?.map((err) => (err.message === err.message.includes('must be unique') ? 'Usuário inválido' : `Usuário "${req.body.usuario}" já cadastrado`)),
@@ -110,6 +108,10 @@ class PedidoController {
         },
       );
     }
+  }
+
+  async incluirFoto(req, res) {
+
   }
 }
 

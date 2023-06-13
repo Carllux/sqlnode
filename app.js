@@ -6,6 +6,7 @@ dotenv.config();
 import { resolve } from 'path';
 import './src/database';
 
+// import multer from 'multer';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -43,9 +44,10 @@ class App {
     this.app.use(helmet());
     this.app.use(cors(corsOptions));
     this.app.use(morgan('tiny'));
-    this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));
-    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use('/images/', express.static(resolve(__dirname, '..', 'public')));
     this.app.use(express.json());
+    // this.app.use(multer().any());
+    this.app.use(express.urlencoded({ extended: true }));
   }
 
   routes() {
