@@ -44,7 +44,7 @@ class App {
     this.app.use(helmet());
     this.app.use(cors(corsOptions));
     this.app.use(morgan('tiny'));
-    this.app.use('/images/', express.static(resolve(__dirname, '..', 'public')));
+    this.app.use('/public/', express.static(resolve(__dirname, 'public')));
     this.app.use(express.json());
     // this.app.use(multer().any());
     this.app.use(express.urlencoded({ extended: true }));
