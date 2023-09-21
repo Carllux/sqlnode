@@ -1,9 +1,9 @@
 /* eslint-disable import/no-import-module-exports */
 import Sequelize from 'sequelize';
-import dbConfig from '../config/database';
-import Usuario from '../models/Usuario';
-import Pedido from '../models/Pedido';
-import Status from '../models/Status';
+import dbConfig from '../config/database.js';
+import Usuario from '../models/Usuario.js';
+import Pedido from '../models/Pedido.js';
+import Status from '../models/Status.js';
 
 const models = [Usuario, Pedido, Status];
 const connection = new Sequelize(dbConfig);
@@ -18,4 +18,4 @@ connection.authenticate()
 
 models.forEach((model) => model.init(connection));
 
-module.exports = connection;
+export default connection;

@@ -1,5 +1,5 @@
-import Usuario from '../models/Usuario';
-import Pedido from '../models/Pedido';
+import Usuario from '../models/Usuario.js';
+import Pedido from '../models/Pedido.js';
 
 class PedidoController {
   async index(_req, res) {

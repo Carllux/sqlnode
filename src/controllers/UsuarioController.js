@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { resolve } from 'path';
 import multer from 'multer';
-import Usuario from '../models/Usuario';
+import Usuario from '../models/Usuario.js';
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => {

@@ -4,16 +4,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { resolve } from 'path';
-import './src/database';
+import './src/database/index.js';
 
 // import multer from 'multer';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import express from 'express';
-import usuarioRoutes from './src/routes/usuarioRoutes';
-import tokenRoutes from './src/routes/tokenRoutes';
-import pedidoRoutes from './src/routes/pedidoRoutes';
+import usuarioRoutes from './src/routes/usuarioRoutes.js';
+import tokenRoutes from './src/routes/tokenRoutes.js';
+import pedidoRoutes from './src/routes/pedidoRoutes.js';
 
 // Versão um da API
 const v1Url = `${process.env.V1_URL}`;
@@ -44,7 +44,7 @@ class App {
     this.app.use(helmet());
     this.app.use(cors(corsOptions));
     this.app.use(morgan('tiny'));
-    this.app.use('/public/', express.static(resolve(__dirname, 'public')));
+    //this.app.use('/public/', express.static(resolve(__dirname, 'public')));
     this.app.use(express.json());
     // this.app.use(multer().any());
     this.app.use(express.urlencoded({ extended: true }));

@@ -1,8 +1,9 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config()
 
-module.exports = {
-  dialect: process.env.DATABASE_DIALECT,
+const dbConfig = {
   host: process.env.DATABASE_HOST,
+  dialect: process.env.DATABASE_DIALECT,
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
@@ -20,3 +21,5 @@ module.exports = {
   },
   timezone: 'America/Sao_Paulo',
 };
+
+export default dbConfig;

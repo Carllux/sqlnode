@@ -1,5 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
-import Pedido from './Pedido';
+import Pedido from './Pedido.js';
 
 export default class Status extends Model {
   static init(sequelize) {

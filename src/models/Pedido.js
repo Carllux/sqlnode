@@ -1,5 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
-import Usuario from './Usuario';
+import Usuario from './Usuario.js';
 
 export default class Pedido extends Model {
   static init(sequelize) {
